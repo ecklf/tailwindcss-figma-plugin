@@ -7,7 +7,8 @@ figma.showUI(__html__);
 
 figma.ui.onmessage = msg => {
   if (msg.type === CREATE_COLORSTYLES) {
-    addColorStyles();
+    const { prefix, twConfig } = msg;
+    addColorStyles(prefix, twConfig);
   }
 
   figma.closePlugin();
