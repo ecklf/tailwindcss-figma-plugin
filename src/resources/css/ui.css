@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+a {
+  transition: all 0.27s cubic-bezier(0.3, 0.1, 0.58, 1) 0s;
+}
+
+@tailwind utilities;
