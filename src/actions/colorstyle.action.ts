@@ -19,9 +19,7 @@ export const addColorStyles = (prefix, config) => {
     if (i === 0) {
       prefix = prefix !== "" ? `${prefix}/` : "";
     } else {
-      console.log(prefix);
       prefix = prefix !== "" ? `${prefix}base/` : "base/";
-      console.log(prefix);
     }
 
     for (let colorName of Object.keys(colorSpace)) {
