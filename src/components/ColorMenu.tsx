@@ -75,7 +75,7 @@ function ColorView() {
             className="ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
             disabled={true}
           >
-            Generate
+            Add Styles
           </button>
         ) : (
           <button
@@ -83,7 +83,7 @@ function ColorView() {
             className="ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded"
             disabled={false}
           >
-            Generate
+            Add Styles
           </button>
         )}
       </div>
