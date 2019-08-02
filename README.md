@@ -1,23 +1,11 @@
-# React 
+# TailwindCSS Figma Plugin
 
-<img src="../_screenshots/webpack.png" width="400" />
+(more detailed README soon)
 
-Creates rectangles (same as the [Webpack sample plugin][webpack]).
+Build:
 
-This demonstrates:
+> npx webpack
 
-- bundling plugin code using Webpack, and
-- using React with TSX.
+Dev:
 
-The main plugin code is in `src/code.ts`. The HTML for the UI is in
-`src/ui.html`, while the embedded JavaScript is in `src/ui.tsx`.
-
-These are compiled to files in `dist/`, which are what Figma will use to run
-your plugin.
-
-To build:
-
-    $ npm install
-    $ npx webpack
-
-[webpack]: ../webpack/
+> npx webpack --mode=development --watch
