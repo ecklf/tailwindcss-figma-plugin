@@ -4,7 +4,9 @@
   "description": "",
   "main": "code.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx webpack --mode=development --watch",
+    "build": "npx webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
