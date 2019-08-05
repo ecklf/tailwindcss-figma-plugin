@@ -12,7 +12,7 @@ Make your life with Tailwind CSS and Figma easier.
    $ yarn install
    ```
 
-2. The projects offers either a dev or build script
+2. The config offers either a dev or build script
 
    ```sh
    $ yarn dev
