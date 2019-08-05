@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@tailwindcss/custom-forms@^0.2.0":
+"@tailwindcss/custom-forms@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@tailwindcss/custom-forms/-/custom-forms-0.2.0.tgz#ff5a7829f1693a11867f5b3ade57d99e1ecc4143"
   integrity sha512-s2D96nqnyDoytfQfqPS2PenhYih/lSzdK8H17Bb6Bif7+xmR4Ik2/1xhbbs/bzgLGTb6fpEtbzQeV6jgPu7W+A==
