@@ -4,6 +4,7 @@ import { CREATE_COLORSTYLES } from "../actions/colorstyle.action";
 function ColorView() {
   const [prefix, setPrefix] = useState("");
   const [twConfig, setTwConfig] = useState(null);
+  const [configName, setConfigName] = useState("Upload Config");
   const inputRef = useRef(null);
 
   const onCreateColorStyles = () => {
@@ -17,14 +18,21 @@ function ColorView() {
    * Modified version of:
    * https://github.com/ameistad/tailwind-colors/blob/master/src/components/LoadConfig.vue#L72
    */
-  const onUploadConfig = event => {
-    const file = event.target.files[0];
+  const onUploadConfig = uploadEvent => {
+    const file = uploadEvent.target.files[0];
     const fileReader = new FileReader();
-    fileReader.onload = event => {
+    fileReader.onload = uploadEvent => {
       try {
         let config: string = fileReader.result.toString();
         config = config.replace(/require\(.+?\)/g, "");
         config = eval(config);
+        // Limit config name length
+        const maxLength = 19;
+        var fileName =
+          file.name.length > maxLength
+            ? file.name.substring(0, maxLength - 3) + "..."
+            : file.name;
+        setConfigName(fileName);
         setTwConfig(config);
       } catch (error) {
         alert(error);
@@ -64,25 +72,17 @@ function ColorView() {
             inputRef.current.click();
           }}
         >
-          Upload config
+          {configName}
         </button>
-        {twConfig === null ? (
-          <button
-            onClick={onCreateColorStyles}
-            className="ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
-            disabled={true}
-          >
-            Add Styles
-          </button>
-        ) : (
-          <button
-            onClick={onCreateColorStyles}
-            className="ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded"
-            disabled={false}
-          >
-            Add Styles
-          </button>
-        )}
+        <button
+          onClick={onCreateColorStyles}
+          className={`ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
+            twConfig === null ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={twConfig === null ? true : false}
+        >
+          Add Styles
+        </button>
       </div>
     </React.Fragment>
   );
