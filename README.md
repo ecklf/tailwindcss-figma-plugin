@@ -1,11 +1,24 @@
 # TailwindCSS Figma Plugin
 
-(more detailed README soon)
+Make your life with Tailwind CSS and Figma easier.
 
-Build:
+![plugin banner](./images/banner.png)
 
-> npx webpack
+## Development
 
-Dev:
+1. First, install your dependencies:
 
-> npx webpack --mode=development --watch
+   ```sh
+   $ yarn install
+   ```
+
+2. The projects offers either a dev or build script
+
+   ```sh
+   $ yarn dev
+   $ yarn build
+   ```
+
+## License
+
+MIT
