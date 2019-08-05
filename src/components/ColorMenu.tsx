@@ -18,19 +18,13 @@ function ColorView() {
    * https://github.com/ameistad/tailwind-colors/blob/master/src/components/LoadConfig.vue#L72
    */
   const onUploadConfig = event => {
-    function configParse(text) {
-      text = text.replace(/module.exports = /, "");
-      text = text.replace(/;/, "");
-      // Ignore plugins array
-      text = text.replace(/require\(.+?\)/g, "");
-      console.log(text);
-      return Function("return (" + text + ")")();
-    }
     const file = event.target.files[0];
     const fileReader = new FileReader();
     fileReader.onload = event => {
       try {
-        const config: any = configParse(fileReader.result);
+        let config: string = fileReader.result.toString();
+        config = config.replace(/require\(.+?\)/g, "");
+        config = eval(config);
         setTwConfig(config);
       } catch (error) {
         alert(error);
