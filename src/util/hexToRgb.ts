@@ -1,10 +1,17 @@
+import * as hexRgb from "hex-rgb";
+
 export function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16) / 255,
-        g: parseInt(result[2], 16) / 255,
-        b: parseInt(result[3], 16) / 255
-      }
-    : null;
+  try {
+    const rgbValue = hexRgb(hex);
+
+    const decimalValues = {
+      r: rgbValue.red / 255,
+      g: rgbValue.green / 255,
+      b: rgbValue.blue / 255
+    };
+
+    return decimalValues;
+  } catch (error) {
+    console.log(error);
+  }
 }
