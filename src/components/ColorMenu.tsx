@@ -21,6 +21,9 @@ function ColorView() {
     function configParse(text) {
       text = text.replace(/module.exports = /, "");
       text = text.replace(/;/, "");
+      // Ignore plugins array
+      text = text.replace(/require\(.+?\)/g, "");
+      console.log(text);
       return Function("return (" + text + ")")();
     }
     const file = event.target.files[0];
