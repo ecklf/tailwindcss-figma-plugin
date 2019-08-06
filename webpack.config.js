@@ -2,6 +2,16 @@ const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
+/**
+ * Custom PurgeCSS Extractor
+ * https://github.com/FullHuman/purgecss
+ */
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-z0-9-:\/]+/g);
+  }
+}
+
 module.exports = (env, argv) => ({
   mode: argv.mode === "production" ? "production" : "development",
 
@@ -28,7 +38,25 @@ module.exports = (env, argv) => ({
             loader: "postcss-loader",
             options: {
               ident: "postcss",
-              plugins: [require("tailwindcss"), require("autoprefixer")]
+              plugins: [
+                require("tailwindcss")("./tailwind.config.js"),
+                ...(argv.mode === "production"
+                  ? [
+                      require("@fullhuman/postcss-purgecss")({
+                        content: ["**/*.html", "**/*.tsx", "**/*.jsx"],
+                        css: ["**/*.css"],
+                        extractors: [
+                          {
+                            extractor: TailwindExtractor,
+                            // Specify the file extensions to include when scanning
+                            extensions: ["html", "js", "jsx", "css"]
+                          }
+                        ]
+                      })
+                    ]
+                  : []),
+                require("autoprefixer")
+              ]
             }
           }
         ]
