@@ -1,15 +1,15 @@
 {
-  "name": "sandbox",
+  "name": "tailwindcss",
   "version": "1.0.2",
-  "description": "",
+  "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx webpack --mode=development --watch",
     "build": "npx webpack --mode=production"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "impulse",
+  "license": "MIT",
   "dependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
