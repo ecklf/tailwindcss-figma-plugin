@@ -30,6 +30,7 @@
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
     "@tailwindcss/custom-forms": "0.2.0"
   }
 }
