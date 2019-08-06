@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "@fullhuman/postcss-purgecss": "1.2.0",
     "@tailwindcss/custom-forms": "0.2.0"
   }
 }
