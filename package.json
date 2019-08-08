@@ -5,8 +5,8 @@
   "main": "code.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx webpack --mode=development --watch",
-    "build": "npx webpack --mode=production"
+    "dev": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
   },
   "author": "impulse",
   "license": "MIT",
