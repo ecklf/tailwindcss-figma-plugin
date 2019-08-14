@@ -4,7 +4,9 @@
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "testw": "jest --watchAll",
+    "coverage": "jest --coverage",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
@@ -15,12 +17,13 @@
     "@types/react-dom": "^16.8.5",
     "autoprefixer": "^9.6.1",
     "css-loader": "^3.1.0",
-    "hex-rgb": "^4.1.0",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
+    "parse-color": "^1.0.0",
     "postcss-loader": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "require-from-string": "^2.0.2",
     "style-loader": "^1.0.0",
     "tailwindcss": "^1.0.6",
     "ts-loader": "^6.0.4",
@@ -31,6 +34,10 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "@tailwindcss/custom-forms": "0.2.0"
+    "@tailwindcss/custom-forms": "0.2.0",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.1",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2"
   }
 }
