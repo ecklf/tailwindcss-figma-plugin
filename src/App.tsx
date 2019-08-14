@@ -1,15 +1,16 @@
-import React, { useState, useRef } from "react";
-import * as ReactDOM from "react-dom";
-import "./resources/css/ui.css";
+import React, {useState, useRef} from 'react';
+import * as ReactDOM from 'react-dom';
+import './resources/css/ui.css';
 
-import ColorSection from "./components/ColorSection";
-import Footer from "./components/Footer";
+import ColorSection from './components/ColorSection';
+import FontSection from './components/FontSection';
+import Footer from './components/Footer';
 
 declare function require(path: string): any;
 
 function App() {
   const inputRef = useRef(null);
-  const [configName, setConfigName] = useState("Upload Config");
+  const [configName, setConfigName] = useState('Upload Config');
   const [configFile, setConfigFile] = useState(null);
 
   /**
@@ -22,13 +23,13 @@ function App() {
     fileReader.onload = () => {
       try {
         let config: string = fileReader.result.toString();
-        config = config.replace(/require\(.+?\)/g, "");
+        config = config.replace(/require\(.+?\)/g, '');
         config = eval(config);
         // Limit config name length
         const maxLength = 19;
         var fileName =
           file.name.length > maxLength
-            ? file.name.substring(0, maxLength - 3) + "..."
+            ? file.name.substring(0, maxLength - 3) + '...'
             : file.name;
         setConfigName(fileName);
         setConfigFile(config);
@@ -54,15 +55,15 @@ function App() {
           className="inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-700"
           onClick={e => {
             inputRef.current.click();
-          }}
-        >
+          }}>
           {configName}
         </button>
         <ColorSection configFile={configFile} />
+        <FontSection configFile={configFile} />
       </div>
       <Footer />
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("react-page"));
+ReactDOM.render(<App />, document.getElementById('react-page'));

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-import { CREATE_COLORSTYLES } from "../actions/colorstyle.action";
+import {CREATE_COLORSTYLES} from '../actions/colorstyle.action';
 
-function ColorSection({ configFile }) {
-  const [prefix, setPrefix] = useState("");
+function ColorSection({configFile}) {
+  const [prefix, setPrefix] = useState('');
 
   return (
     <React.Fragment>
@@ -26,16 +26,15 @@ function ColorSection({ configFile }) {
           onClick={() => {
             parent.postMessage(
               {
-                pluginMessage: { type: CREATE_COLORSTYLES, prefix, configFile }
+                pluginMessage: {type: CREATE_COLORSTYLES, prefix, configFile},
               },
-              "*"
+              '*',
             );
           }}
           className={`ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
-            configFile === null ? "opacity-50 cursor-not-allowed" : ""
+            configFile === null ? 'opacity-50 cursor-not-allowed' : ''
           }`}
-          disabled={configFile === null ? true : false}
-        >
+          disabled={configFile === null ? true : false}>
           Add Styles
         </button>
       </div>
