@@ -1,5 +1,8 @@
 const parse = require('parse-color');
-export function convertColor(color: string): object {
+export function convertColor(color: string): RGBA {
+  if (color === 'transparent') {
+    color = 'rgba(0, 0, 0, 0.0)';
+  }
   const {rgba} = parse(color);
   return {
     r: rgba[0] / 255,
