@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="bg-gray-200">
       <div className="px-4 pt-2">
-        <h1 className="text-xl text-bold ">Tailwind ➡️ Figma</h1>
+        <h1 className="text-xl text-bold ">Tailwind to Figma</h1>
         <input
           ref={inputRef}
           onChange={handleConfigUpload}
@@ -59,7 +59,7 @@ function App() {
           {configName}
         </button>
         <ColorSection configFile={configFile} />
-        <FontSection configFile={configFile} />
+        {/*<FontSection configFile={configFile} />*/}
       </div>
       <Footer />
     </div>

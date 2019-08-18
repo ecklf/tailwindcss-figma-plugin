@@ -1,6 +1,5 @@
-import {CREATE_COLORSTYLES, addColorStyles} from './actions/colorstyle.action';
-
-import {createFontStyle} from './actions/fontStyle.action';
+import {ActionType, PluginMessage} from './actions';
+import * as colors from './core/colors';
 
 let windowSize = {
   width: 500,
@@ -14,8 +13,9 @@ figma.ui.postMessage(42);
 // createFontStyle("IBM Plex Sans", "Bold");
 
 figma.ui.onmessage = msg => {
-  if (msg.type === CREATE_COLORSTYLES) {
-    addColorStyles(msg);
+  console.log(msg);
+  if (msg.type === ActionType.ADD_COLORS) {
+    colors.addColors(msg);
   }
 
   if (msg.type === 'test') {

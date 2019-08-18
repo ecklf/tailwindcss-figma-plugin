@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-
-import {CREATE_COLORSTYLES} from '../actions/colorstyle.action';
+import {ActionType, PluginMessage} from '../actions';
 
 function ColorSection({configFile}) {
   const [prefix, setPrefix] = useState('');
@@ -24,9 +23,13 @@ function ColorSection({configFile}) {
       <div className="flex flex-row justify-between items-center">
         <button
           onClick={() => {
+            const pluginMessage: PluginMessage = {
+              type: ActionType.ADD_COLORS,
+              payload: {prefix, configFile},
+            };
             parent.postMessage(
               {
-                pluginMessage: {type: CREATE_COLORSTYLES, prefix, configFile},
+                pluginMessage,
               },
               '*',
             );
