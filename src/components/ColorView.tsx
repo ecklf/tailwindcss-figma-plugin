@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
-import {ActionType, PluginMessage} from '../actions';
+import React, { useState } from "react";
 
-function ColorSection({configFile}) {
-  const [prefix, setPrefix] = useState('');
+function ColorView({ twColors, onAddColors }) {
+  const [prefix, setPrefix] = useState("");
 
   return (
     <React.Fragment>
@@ -23,21 +22,13 @@ function ColorSection({configFile}) {
       <div className="flex flex-row justify-between items-center">
         <button
           onClick={() => {
-            const pluginMessage: PluginMessage = {
-              type: ActionType.ADD_COLORS,
-              payload: {prefix, configFile},
-            };
-            parent.postMessage(
-              {
-                pluginMessage,
-              },
-              '*',
-            );
+            onAddColors(prefix);
           }}
           className={`ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
-            configFile === null ? 'opacity-50 cursor-not-allowed' : ''
+            twColors.length === 0 ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          disabled={configFile === null ? true : false}>
+          disabled={twColors.length === 0 ? true : false}
+        >
           Add Styles
         </button>
       </div>
@@ -45,4 +36,4 @@ function ColorSection({configFile}) {
   );
 }
 
-export default ColorSection;
+export default ColorView;

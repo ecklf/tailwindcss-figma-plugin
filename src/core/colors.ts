@@ -1,54 +1,31 @@
-import {convertColor} from '../util/convertColor';
-
-export interface TailwindColor {
-  name: string;
-  value: RGBA;
-}
-
-export const createSolidColor = (name: string, color: RGBA) => {
-  const style = figma.createPaintStyle();
-  style.name = name;
-  style.paints = [{type: 'SOLID', color}];
-};
-
-export const addColors = (payload: object): boolean => {
-  const fetchedColors: Array<TailwindColor> = fetchColorsFromConfig(payload);
-  console.log(fetchedColors);
+export const addColors = (payload: addColorsPayload): boolean => {
   try {
-    for (const {name, value} of fetchedColors) {
+    for (const { name, value } of payload.config) {
       createSolidColor(name, value);
     }
     return true;
   } catch (error) {
+    alert(error);
     return false;
   }
 };
 
-export const fetchColorsFromConfig = (config): Array<TailwindColor> => {
-  let foundColors: Array<TailwindColor> = [];
+export const createSolidColor = (name: string, color: RGBA) => {
+  const style = figma.createPaintStyle();
 
-  if (config.theme) {
-    const {theme} = config;
-    if (theme.colors) {
-      // Looping through all color names
-      for (const color of Object.keys(theme.colors)) {
-        const colorData = theme.colors[color];
-        // Determine if the current color has nested shades
-        if (typeof colorData === 'object') {
-          for (const colorShade of Object.keys(colorData)) {
-            foundColors.push({
-              name: `${color}/${colorShade}`,
-              value: convertColor(colorData[colorShade]),
-            });
-          }
-        } else {
-          foundColors.push({
-            name: color,
-            value: convertColor(theme.colors[color]),
-          });
-        }
-      }
-    }
-  }
-  return foundColors;
+  figma.createPaintStyle;
+  style.name = name;
+
+  const { r, g, b, a } = color;
+
+  const rgbColor: RGB = { r, g, b };
+  const alpha: number = a;
+
+  const solidPaint: SolidPaint = {
+    type: "SOLID",
+    color: rgbColor,
+    opacity: alpha
+  };
+
+  style.paints = [solidPaint];
 };

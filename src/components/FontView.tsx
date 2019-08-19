@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
-function FontSection({configFile}) {
+function FontView({ configFile }) {
   const [fontWeights, setFontWeights] = useState([]);
   const [fontFamilies, setFontFamilies] = useState([]);
 
   onmessage = event => {
-    console.log('got this from the plugin code', event.data.pluginMessage);
+    console.log("got this from the plugin code", event.data.pluginMessage);
   };
 
   useEffect(() => {
     if (configFile && configFile.theme) {
-      const {fontWeight, fontFamily} = configFile.theme;
+      const { fontWeight, fontFamily } = configFile.theme;
       if (fontWeight) {
         const mappedFontWeights = Object.keys(fontWeight).map(weight => {
           return weight;
@@ -18,8 +18,8 @@ function FontSection({configFile}) {
         setFontWeights(mappedFontWeights);
       }
       if (fontFamily) {
-        const mappedFontFamilies = fontFamily['sans'].map(style => {
-          const familyName = style.replace(/"/g, '');
+        const mappedFontFamilies = fontFamily["sans"].map(style => {
+          const familyName = style.replace(/"/g, "");
           return familyName;
         });
         setFontFamilies(mappedFontFamilies);
@@ -43,7 +43,7 @@ function FontSection({configFile}) {
 
   return (
     <div>
-      FontSection
+      FontView
       {fontWeights.map(weightType => {
         return <div key={`key-${weightType}`}>{weightType}</div>;
       })}
@@ -51,7 +51,8 @@ function FontSection({configFile}) {
         <span className="text-gray-700">Select</span>
         <select
           onChange={onFontFamilySelect}
-          className="form-select block w-full mt-1">
+          className="form-select block w-full mt-1"
+        >
           {fontFamilies.map(familyType => {
             return <option key={`key-${familyType}`}>{familyType} </option>;
           })}
@@ -61,4 +62,4 @@ function FontSection({configFile}) {
   );
 }
 
-export default FontSection;
+export default FontView;
