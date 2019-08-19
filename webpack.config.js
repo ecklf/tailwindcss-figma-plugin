@@ -20,7 +20,7 @@ module.exports = (env, argv) => ({
 
   entry: {
     ui: "./src/App.tsx", // The entry point for your UI code
-    code: "./src/init.ts" // The entry point for your plugin code
+    code: "./src/code.ts" // The entry point for your plugin code
   },
 
   module: {
@@ -43,6 +43,7 @@ module.exports = (env, argv) => ({
                 ...(argv.mode === "production"
                   ? [
                       require("@fullhuman/postcss-purgecss")({
+                        whitelist: ["link"],
                         content: ["**/*.html", "**/*.tsx", "**/*.jsx"],
                         css: ["**/*.css"],
                         extractors: [
@@ -71,7 +72,7 @@ module.exports = (env, argv) => ({
   },
 
   // Webpack tries these extensions for you if you omit the extension like "import './file'"
-  resolve: { extensions: [".tsx", ".ts", ".jsx", ".js"] },
+  resolve: { extensions: [".ts", ".tsx", ".js", ".jsx"] },
 
   output: {
     filename: "[name].js",

@@ -7,7 +7,7 @@ function Footer() {
         <a
           target="_parent"
           href="https://tailwindcss.com/"
-          className="pointer text-white hover:text-teal-500"
+          className="link pointer text-white hover:text-teal-500"
         >
           <svg
             className="fill-current h-6 w-6"
@@ -43,7 +43,7 @@ function Footer() {
         <a
           target="_parent"
           href="https://github.com/impulse/tailwindcss-figma-plugin"
-          className="pointer text-white hover:text-teal-500"
+          className="link pointer text-white hover:text-teal-500"
         >
           <svg
             className="stroke-current h-4 w-4"
