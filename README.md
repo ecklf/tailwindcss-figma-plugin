@@ -1,5 +1,7 @@
 # TailwindCSS Figma Plugin
 
+[![CircleCI](https://circleci.com/gh/impulse/tailwindcss-figma-plugin/tree/master.svg?style=svg)](https://circleci.com/gh/impulse/tailwindcss-figma-plugin/tree/master)
+
 Make your life with Tailwind CSS and Figma easier.
 
 ![plugin banner](./images/banner.png)
