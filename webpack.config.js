@@ -43,6 +43,7 @@ module.exports = (env, argv) => ({
                 ...(argv.mode === "production"
                   ? [
                       require("@fullhuman/postcss-purgecss")({
+                        whitelist: ["link"],
                         content: ["**/*.html", "**/*.tsx", "**/*.jsx"],
                         css: ["**/*.css"],
                         extractors: [
