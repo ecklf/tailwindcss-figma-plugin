@@ -40,7 +40,11 @@ function App() {
         const config: object = parseConfig(configString);
         // Limit config name length
         const maxLength = 19;
-        setConfigName(file.name);
+        var fileName =
+          file.name.length > maxLength
+            ? file.name.substring(0, maxLength - 3) + "..."
+            : file.name;
+        setConfigName(fileName);
         setConfig(config);
       } catch (error) {
         alert(error);
@@ -68,7 +72,6 @@ function App() {
   return (
     <div className="bg-gray-200">
       <div className="px-4 pt-2">
-        <h1 className="text-xl text-bold ">Tailwind to Figma</h1>
         <input
           ref={inputRef}
           onChange={handleConfigUpload}
@@ -77,7 +80,7 @@ function App() {
           accept="text/javascript"
         />
         <button
-          className="inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-700"
+          className="my-2 inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-700"
           onClick={e => {
             inputRef.current.click();
           }}

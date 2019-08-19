@@ -6,9 +6,9 @@ function ColorView({ twColors, onAddColors }) {
   return (
     <React.Fragment>
       <div className="w-full">
-        <label className="block uppercase tracking-wide text-xs font-bold text-gray-700">
+        {/* <label className="block uppercase tracking-wide text-xs font-bold text-gray-700">
           Style Prefix
-        </label>
+        </label> */}
         <input
           value={prefix}
           onChange={e => setPrefix(e.target.value)}
@@ -17,14 +17,14 @@ function ColorView({ twColors, onAddColors }) {
         />
       </div>
 
-      <hr className="my-6" />
+      {/* <hr className="my-6" /> */}
 
       <div className="flex flex-row justify-between items-center">
         <button
           onClick={() => {
             onAddColors(prefix);
           }}
-          className={`ml-4 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
+          className={`mt-3 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
             twColors.length === 0 ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={twColors.length === 0 ? true : false}
