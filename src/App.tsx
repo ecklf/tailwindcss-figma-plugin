@@ -1,21 +1,40 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import * as ReactDOM from 'react-dom';
 import './resources/css/ui.css';
+
+import {useDropzone} from 'react-dropzone';
 
 import {ActionType} from './core/actions';
 import {parseConfig, fetchConfigColors} from './core/config';
 
 import ColorView from './components/ColorView';
-import FontView from './components/FontView';
+// import FontView from "./components/FontView";
 import Footer from './components/Footer';
 
 declare function require(path: string): any;
 
 function App() {
-  const inputRef = useRef(null);
   const [config, setConfig] = useState(null);
-  const [configName, setConfigName] = useState('Upload Config');
+  const [configName, setConfigName] = useState(
+    'Drag or click to upload config',
+  );
   const [twColors, setTwColors] = useState([]);
+
+  const onDrop = useCallback(acceptedFiles => {
+    const reader = new FileReader();
+
+    reader.onabort = () => console.log('file reading was aborted');
+    reader.onerror = () => console.log('file reading has failed');
+    reader.onload = () => {
+      // Do whatever you want with the file contents
+      const binaryStr = reader.result;
+      const config: object = parseConfig(binaryStr as string);
+      setConfigName(acceptedFiles[0].name);
+      setConfig(config);
+    };
+    acceptedFiles.forEach(file => reader.readAsBinaryString(file));
+  }, []);
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
   // Watches if config file changes
   useEffect(() => {
@@ -27,31 +46,6 @@ function App() {
       }
     }
   }, [config]);
-  /**
-   * Modified version of:
-   * https://github.com/ameistad/tailwind-colors/blob/master/src/components/LoadConfig.vue#L72
-   */
-  const handleConfigUpload = uploadEvent => {
-    const file = uploadEvent.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      try {
-        const configString: string = fileReader.result.toString();
-        const config: object = parseConfig(configString);
-        // Limit config name length
-        const maxLength = 19;
-        var fileName =
-          file.name.length > maxLength
-            ? file.name.substring(0, maxLength - 3) + '...'
-            : file.name;
-        setConfigName(fileName);
-        setConfig(config);
-      } catch (error) {
-        alert(error);
-      }
-    };
-    fileReader.readAsText(file);
-  };
 
   const handleAddColors = (colorPrefix: string) => {
     const pluginMessage: PluginMessage = {
@@ -72,20 +66,15 @@ function App() {
   return (
     <div className="bg-gray-200">
       <div className="px-4 pt-2">
-        <input
-          ref={inputRef}
-          onChange={handleConfigUpload}
-          hidden
-          type="file"
-          accept="text/javascript"
-        />
-        <button
-          className="my-2 inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-700"
-          onClick={e => {
-            inputRef.current.click();
-          }}>
-          {configName}
-        </button>
+        <section className="cursor-pointer w-full px-4 py-2 text-center text-gray-500 rounded-lg border border-gray-500 border-dashed">
+          <div
+            {...getRootProps({
+              className: 'focus:outline-none',
+            })}>
+            <input {...getInputProps()} />
+            <p className="text-gray-600 select-none">{configName}</p>
+          </div>
+        </section>
         <ColorView twColors={twColors} onAddColors={handleAddColors} />
         {/*<FontView config={config} />*/}
       </div>
