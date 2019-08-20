@@ -36,11 +36,11 @@ export const fetchConfigColors = (config): Array<TailwindColor> => {
     let mergedColors = {};
 
     if (theme.colors) {
-      mergedColors = {...theme.colors};
+      mergedColors = {...mergedColors, ...theme.colors};
     }
 
     if (theme.extend && theme.extend.colors) {
-      mergedColors = {...theme.extend.colors};
+      mergedColors = {...mergedColors, ...theme.extend.colors};
     }
 
     // Looping through all overwritten and extended colors
