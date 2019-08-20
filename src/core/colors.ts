@@ -1,7 +1,8 @@
 export const addColors = (payload: addColorsPayload): boolean => {
   try {
-    for (const { name, value } of payload.config) {
-      createSolidColor(name, value);
+    for (const {name, value} of payload.config) {
+      const prefix = payload.prefix !== '' ? `${payload.prefix}/` : '';
+      createSolidColor(`${prefix}${name}`, value);
     }
     return true;
   } catch (error) {
@@ -16,15 +17,15 @@ export const createSolidColor = (name: string, color: RGBA) => {
   figma.createPaintStyle;
   style.name = name;
 
-  const { r, g, b, a } = color;
+  const {r, g, b, a} = color;
 
-  const rgbColor: RGB = { r, g, b };
+  const rgbColor: RGB = {r, g, b};
   const alpha: number = a;
 
   const solidPaint: SolidPaint = {
-    type: "SOLID",
+    type: 'SOLID',
     color: rgbColor,
-    opacity: alpha
+    opacity: alpha,
   };
 
   style.paints = [solidPaint];
