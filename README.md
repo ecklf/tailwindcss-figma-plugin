@@ -1,14 +1,16 @@
-# TailwindCSS Figma Plugin
+# TailwindCSS Figma Plugin &middot; [![CircleCI](https://circleci.com/gh/impulse/tailwindcss-figma-plugin.svg?style=svg)](https://circleci.com/gh/impulse/tailwindcss-figma-plugin) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-[![CircleCI](https://circleci.com/gh/impulse/tailwindcss-figma-plugin/tree/master.svg?style=svg)](https://circleci.com/gh/impulse/tailwindcss-figma-plugin/tree/master)
-
-Make your life with Tailwind CSS and Figma easier.
+Making your life with Tailwind CSS and Figma easier.
 
 ![plugin banner](./images/banner.png)
 
-## Development
+## Setup
 
-1. First, install your dependencies:
+This Plugin will only work when running within Figma since it relies on its API.
+
+Go to the Plugins tab and add this projects `manifest.json`. For more info read the [Figma docs](https://www.figma.com/plugin-docs/intro/)
+
+1. Then, install your dependencies:
 
    ```sh
    $ yarn install
