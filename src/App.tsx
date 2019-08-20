@@ -1,20 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
-import * as ReactDOM from "react-dom";
-import "./resources/css/ui.css";
+import React, {useState, useRef, useEffect} from 'react';
+import * as ReactDOM from 'react-dom';
+import './resources/css/ui.css';
 
-import { ActionType } from "./core/actions";
-import { parseConfig, fetchConfigColors } from "./core/config";
+import {ActionType} from './core/actions';
+import {parseConfig, fetchConfigColors} from './core/config';
 
-import ColorView from "./components/ColorView";
-import FontView from "./components/FontView";
-import Footer from "./components/Footer";
+import ColorView from './components/ColorView';
+import FontView from './components/FontView';
+import Footer from './components/Footer';
 
 declare function require(path: string): any;
 
 function App() {
   const inputRef = useRef(null);
   const [config, setConfig] = useState(null);
-  const [configName, setConfigName] = useState("Upload Config");
+  const [configName, setConfigName] = useState('Upload Config');
   const [twColors, setTwColors] = useState([]);
 
   // Watches if config file changes
@@ -42,7 +42,7 @@ function App() {
         const maxLength = 19;
         var fileName =
           file.name.length > maxLength
-            ? file.name.substring(0, maxLength - 3) + "..."
+            ? file.name.substring(0, maxLength - 3) + '...'
             : file.name;
         setConfigName(fileName);
         setConfig(config);
@@ -58,14 +58,14 @@ function App() {
       type: ActionType.ADD_COLORS,
       payload: {
         prefix: colorPrefix,
-        config: twColors
-      }
+        config: twColors,
+      },
     };
     parent.postMessage(
       {
-        pluginMessage
+        pluginMessage,
       },
-      "*"
+      '*',
     );
   };
 
@@ -83,8 +83,7 @@ function App() {
           className="my-2 inline-block align-baseline font-bold text-sm text-teal-600 hover:text-teal-700"
           onClick={e => {
             inputRef.current.click();
-          }}
-        >
+          }}>
           {configName}
         </button>
         <ColorView twColors={twColors} onAddColors={handleAddColors} />
@@ -95,4 +94,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("react-page"));
+ReactDOM.render(<App />, document.getElementById('react-page'));
