@@ -1,4 +1,4 @@
-# TailwindCSS Figma Plugin &middot; [![CircleCI](https://circleci.com/gh/impulse/tailwindcss-figma-plugin.svg?style=svg)](https://circleci.com/gh/impulse/tailwindcss-figma-plugin) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+# TailwindCSS Figma Plugin &middot; [![CI](https://action-badges.now.sh/impulse/tailwindcss-figma-plugin)](https://circleci.com/gh/impulse/tailwindcss-figma-plugin) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 Making your life with Tailwind CSS and Figma easier.
 
