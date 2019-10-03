@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.ts",
   "typings": "./src/@types",
@@ -37,7 +37,7 @@
     "@fullhuman/postcss-purgecss": "1.3.0",
     "@tailwindcss/custom-forms": "0.2.1",
     "@types/jest": "24.0.18",
-    "@types/node": "12.7.10",
+    "@types/node": "12.7.11",
     "jest": "24.9.0",
     "ts-jest": "24.1.0"
   }
