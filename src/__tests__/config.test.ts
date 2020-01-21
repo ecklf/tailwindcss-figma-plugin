@@ -28,7 +28,6 @@ describe('parseConfig', () => {
 
   describe('reading a valid configuration file', () => {
     it('should return an object with theme field', () => {
-      const test = parseConfig(defaultConig);
       expect(parseConfig(defaultConig)).toHaveProperty('theme');
     });
   });
@@ -58,7 +57,7 @@ describe('fetchConfigColor', () => {
 
 describe('convertConfigColor', () => {
   describe('Passing a valid config color', () => {
-    let currentColor;
+    let currentColor: RGBA;
     it('should return object from transparent string', () => {
       currentColor = convertConfigColor(colors['transparent']);
       // Check if valid object

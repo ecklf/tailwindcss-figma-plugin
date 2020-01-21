@@ -39,6 +39,7 @@
     "@types/jest": "24.9.0",
     "@types/node": "12.12.25",
     "jest": "24.9.0",
-    "ts-jest": "24.3.0"
+    "ts-jest": "24.3.0",
+    "webpack-dev-server": "^3.10.1"
   }
 }
