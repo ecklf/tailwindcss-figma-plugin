@@ -2,16 +2,6 @@ const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-/**
- * Custom PurgeCSS Extractor
- * https://github.com/FullHuman/purgecss
- */
-class TailwindExtractor {
-  static extract(content) {
-    return content.match(/[A-z0-9-:\/]+/g);
-  }
-}
-
 module.exports = (env, argv) => ({
   mode: argv.mode === "production" ? "production" : "development",
 
@@ -27,7 +17,6 @@ module.exports = (env, argv) => ({
     rules: [
       // Converts TypeScript code to JavaScript
       { test: /\.tsx?$/, use: "ts-loader", exclude: /node_modules/ },
-
       // Enables including CSS by doing "import './file.css'" in your TypeScript code
       {
         test: /\.css$/,
@@ -46,13 +35,8 @@ module.exports = (env, argv) => ({
                         whitelist: ["link"],
                         content: ["**/*.html", "**/*.tsx", "**/*.jsx"],
                         css: ["**/*.css"],
-                        extractors: [
-                          {
-                            extractor: TailwindExtractor,
-                            // Specify the file extensions to include when scanning
-                            extensions: ["html", "js", "jsx", "css"]
-                          }
-                        ]
+                        defaultExtractor: content =>
+                          content.match(/[\w-/:]+(?<!:)/g) || []
                       })
                     ]
                   : []),
@@ -62,7 +46,6 @@ module.exports = (env, argv) => ({
           }
         ]
       },
-
       // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
       {
         test: /\.(png|jpg|gif|webp|svg|zip)$/,

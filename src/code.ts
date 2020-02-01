@@ -1,21 +1,21 @@
-import { ActionType } from "./core/actions";
 import { addColors } from "./core/colors";
 
-// Todo: Custom Windowsize
-// let windowSize = {
-//   width: 500,
-//   height: 700
-// };
-// figma.showUI(__html__, windowSize);
+let windowSize = {
+  width: 300,
+  height: 225
+};
+figma.showUI(__html__, windowSize);
 
-// Todo: Font Action
-// createFontStyle("IBM Plex Sans", "Bold");
-// figma.ui.postMessage(fetchFonts);
-figma.showUI(__html__);
+interface AddColorsMessage {
+  type: "ADD_COLORS";
+  payload: AddColorsPayload;
+}
 
-figma.ui.onmessage = msg => {
-  const { type, payload } = msg;
-  if (type === ActionType.ADD_COLORS) {
+export type PluginMessage = AddColorsMessage;
+
+figma.ui.onmessage = (pluginMessage: PluginMessage) => {
+  const { type, payload } = pluginMessage;
+  if (type === "ADD_COLORS") {
     addColors(payload);
   }
   figma.closePlugin();
