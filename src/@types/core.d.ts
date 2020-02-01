@@ -7,8 +7,7 @@ interface TailwindColor {
   name: string;
   value: RGBA;
 }
-
-interface addColorsPayload {
+interface AddColorsPayload {
   prefix: string;
   config: Array<TailwindColor>;
 }

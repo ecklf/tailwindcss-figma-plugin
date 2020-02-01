@@ -3,10 +3,10 @@ export interface TailwindFont {
   style: string;
 }
 
-export async function createFontStyle(payload: TailwindFont) {
+export const createFontStyle = async (payload: TailwindFont) => {
   try {
-    const {family, style} = payload;
-    const desiredFont: FontName = {family, style};
+    const { family, style } = payload;
+    const desiredFont: FontName = { family, style };
     const fontData = await figma.listAvailableFontsAsync();
     const availableStyles = fontData
       .filter(font => font.fontName.family === family)
@@ -15,9 +15,9 @@ export async function createFontStyle(payload: TailwindFont) {
       });
     await figma.loadFontAsync(desiredFont);
     const fontStyle = figma.createTextStyle();
-    fontStyle.name = 'text-xs';
+    fontStyle.name = "text-xs";
     fontStyle.fontName = desiredFont;
   } catch (error) {
     alert(error);
   }
-}
+};

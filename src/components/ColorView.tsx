@@ -1,36 +1,55 @@
-import React, {useState} from 'react';
+import { observer } from "mobx-react-lite";
+import React, { useState } from "react";
+import { useMst } from "../models/Root";
 
-function ColorView({twColors, onAddColors}) {
-  const [prefix, setPrefix] = useState('');
+interface Props {
+  className?: string;
+}
+
+function ColorView({ className }: Props) {
+  const { addColorStyles, loadedTailwindConfig, loadDefaultStub } = useMst();
+  const [prefix, setPrefix] = useState<string>("");
+
+  const hasAvailableColorStyles = () => {
+    return (
+      loadedTailwindConfig.theme.colors || loadedTailwindConfig.theme.extend
+    );
+  };
 
   return (
     <React.Fragment>
-      <div className="w-full">
-        {/* <label className="block uppercase tracking-wide text-xs font-bold text-gray-700">
-          Style Prefix
-        </label> */}
+      <div className={`${className} w-full`}>
         <input
           value={prefix}
           onChange={e => setPrefix(e.target.value)}
-          className="focus:shadow-none select-none mt-2 w-full form-input block"
+          className="block w-full mt-2 select-none focus:shadow-none form-input"
           placeholder="Style name prefix (optional)"
         />
       </div>
 
-      <div className="flex flex-row justify-between items-center">
+      <div className="flex flex-row items-center mt-2">
         <button
           onClick={() => {
-            onAddColors(prefix);
+            addColorStyles(prefix);
           }}
-          className={`select-none focus:outline-none mt-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded ${
-            twColors.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
+          className={`select-none focus:outline-none bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded ${
+            hasAvailableColorStyles() ? "" : "opacity-50 cursor-not-allowed"
           }`}
-          disabled={twColors.length === 0 ? true : false}>
+          disabled={hasAvailableColorStyles() ? false : true}
+        >
           Add Styles
+        </button>
+        <button
+          className="px-4 py-2 font-medium text-gray-500 hover:text-gray-800"
+          onClick={() => {
+            loadDefaultStub();
+          }}
+        >
+          Load default
         </button>
       </div>
     </React.Fragment>
   );
 }
 
-export default ColorView;
+export default observer(ColorView);
