@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.ts",
   "typings": "./src/@types",
@@ -43,7 +43,7 @@
     "@types/jest": "25.1.1",
     "@types/node": "13.7.0",
     "jest": "25.1.0",
-    "ts-jest": "25.1.0",
+    "ts-jest": "25.2.0",
     "webpack-dev-server": "3.10.2"
   }
 }
