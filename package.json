@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.ts",
   "typings": "./src/@types",
@@ -33,7 +33,7 @@
     "tailwindcss": "^1.1.4",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
-    "url-loader": "^3.0.0",
+    "url-loader": "^4.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
