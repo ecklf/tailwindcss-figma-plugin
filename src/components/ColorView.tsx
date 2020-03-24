@@ -48,7 +48,6 @@ function ColorView({ className }: Props) {
             type="checkbox"
             checked={addSpaces}
             onChange={() => setAddSpaces(!addSpaces)}
-            disabled={prefix.length < 1}
           />
           <span className="ml-2 text-gray-600 text-xs"
           >Add spaces to slashes</span>
