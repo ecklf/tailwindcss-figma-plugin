@@ -39,6 +39,8 @@ interface PluginAPI {
   createEffectStyle(): EffectStyle;
   createGridStyle(): GridStyle;
 
+  getLocalPaintStyles(): PaintStyle[]
+
   importComponentByKeyAsync(key: string): Promise<ComponentNode>;
   importStyleByKeyAsync(key: string): Promise<BaseStyle>;
 

@@ -7,7 +7,7 @@ interface Props {
 }
 
 function ColorView({ className }: Props) {
-  const { addColorStyles, loadedTailwindConfig, loadDefaultStub } = useMst();
+  const { addColorStyles, loadedTailwindConfig, loadDefaultStub, addSpaces, setAddSpaces, overrideStyles, setOverrideStyles } = useMst();
   const [prefix, setPrefix] = useState<string>("");
 
   const hasAvailableColorStyles = () => {
@@ -27,6 +27,34 @@ function ColorView({ className }: Props) {
         />
       </div>
 
+      <div className="flex py-2">
+        <label>
+          <input
+            name="overrideStyles"
+            type="checkbox"
+            checked={overrideStyles}
+            onChange={() => setOverrideStyles(!overrideStyles)}
+            disabled={!hasAvailableColorStyles()}
+          />
+          <span className="ml-2 text-gray-600 text-xs"
+          >Override styles if available</span>
+        </label>
+      </div>
+
+      <div className="flex py-2">
+        <label>
+          <input
+            name="addSpaces"
+            type="checkbox"
+            checked={addSpaces}
+            onChange={() => setAddSpaces(!addSpaces)}
+            disabled={prefix.length < 1}
+          />
+          <span className="ml-2 text-gray-600 text-xs"
+          >Add spaces to slashes</span>
+        </label>
+      </div>
+
       <div className="flex flex-row items-center mt-2">
         <button
           onClick={() => {
@@ -34,7 +62,7 @@ function ColorView({ className }: Props) {
           }}
           className={`select-none focus:outline-none bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded ${
             hasAvailableColorStyles() ? "" : "opacity-50 cursor-not-allowed"
-          }`}
+            }`}
           disabled={hasAvailableColorStyles() ? false : true}
         >
           Add Styles

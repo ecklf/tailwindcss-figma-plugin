@@ -10,4 +10,6 @@ interface TailwindColor {
 interface AddColorsPayload {
   prefix: string;
   config: Array<TailwindColor>;
+  overrideStyles: boolean;
+  addSpaces: boolean;
 }

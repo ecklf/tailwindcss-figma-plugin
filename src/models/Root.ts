@@ -8,6 +8,8 @@ import { fetchConfigColors, parseConfig } from "../core/config";
 const RootModel = types
   .model({
     twPrefix: types.optional(types.string, ""),
+    addSpaces: types.optional(types.boolean, false),
+    overrideStyles: types.optional(types.boolean, false),
     configName: types.optional(types.maybeNull(types.string), null),
     errorMessage: types.optional(types.maybeNull(types.string), null)
   })
@@ -34,6 +36,12 @@ const RootModel = types
     },
     handleReadError: () => {
       alert("Read failed");
+    },
+    setAddSpaces: (value: boolean) => {
+      self.addSpaces = value;
+    },
+    setOverrideStyles: (value: boolean) => {
+      self.overrideStyles = value;
     },
     setTwPrefix: (prefix: string) => {
       self.twPrefix = prefix;
@@ -84,8 +92,10 @@ const RootModel = types
       self.sendPluginMessage({
         type: "ADD_COLORS",
         payload: {
+          prefix: prefix,
           config: fetchConfigColors(self.config),
-          prefix
+          overrideStyles: self.overrideStyles,
+          addSpaces: self.addSpaces,
         }
       });
     }
