@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "description": "Make your life with Tailwind CSS and Figma easier",
   "main": "code.ts",
   "typings": "./src/@types",
@@ -42,7 +42,7 @@
     "@tailwindcss/custom-forms": "0.2.1",
     "@types/jest": "25.1.4",
     "@types/node": "13.9.1",
-    "jest": "25.1.0",
+    "jest": "25.2.3",
     "ts-jest": "25.2.1",
     "webpack-dev-server": "3.10.3"
   }
