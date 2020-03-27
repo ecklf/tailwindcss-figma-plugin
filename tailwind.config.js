@@ -9,6 +9,13 @@ module.exports = {
           "&:focus": {
             borderColor: theme("colors.gray.500")
           }
+        },
+        checkbox: {
+          color: theme("colors.teal.500"),
+          "&:focus": {
+            borderColor: theme("colors.gray.500"),
+            boxShadow: undefined
+          }
         }
       }
     }),
