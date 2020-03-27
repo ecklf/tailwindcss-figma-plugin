@@ -6,16 +6,14 @@ let windowSize = {
 };
 figma.showUI(__html__, windowSize);
 
-let styles: Array<PaintStyle> = []
-
 interface AddColorsMessage {
   type: "ADD_COLORS";
   payload: AddColorsPayload;
 }
 
-figma.getLocalPaintStyles().forEach(style => {
-  styles.push(style)
-})
+let styles: Array<PaintStyle> = [];
+
+styles = figma.getLocalPaintStyles().map(style => style);
 
 export type PluginMessage = AddColorsMessage;
 

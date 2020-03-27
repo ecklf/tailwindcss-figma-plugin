@@ -27,30 +27,32 @@ function ColorView({ className }: Props) {
         />
       </div>
 
-      <div className="flex py-2">
-        <label>
+      <div className="py-2">
+        <label className="inline-flex items-center mt-2">
           <input
             name="overrideStyles"
             type="checkbox"
+            className="form-checkbox"
             checked={overrideStyles}
             onChange={() => setOverrideStyles(!overrideStyles)}
             disabled={!hasAvailableColorStyles()}
           />
-          <span className="ml-2 text-gray-600 text-xs"
-          >Override styles if available</span>
+          <span className="ml-2 text-xs text-gray-600 select-none">
+            Override styles if available
+    </span>
         </label>
-      </div>
 
-      <div className="flex py-2">
-        <label>
+        <label className="inline-flex items-center mt-2">
           <input
             name="addSpaces"
             type="checkbox"
+            className="form-checkbox"
             checked={addSpaces}
             onChange={() => setAddSpaces(!addSpaces)}
           />
-          <span className="ml-2 text-gray-600 text-xs"
-          >Add spaces to slashes</span>
+          <span className="ml-2 text-xs text-gray-600 select-none">
+            Add spaces to slashes
+    </span>
         </label>
       </div>
 
