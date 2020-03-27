@@ -1,6 +1,6 @@
 # TailwindCSS Figma Plugin &middot; ![CI](https://action-badges.now.sh/impulse/tailwindcss-figma-plugin) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Making your life with Tailwind CSS and Figma easier.
@@ -40,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/KA95DEV"><img src="https://avatars1.githubusercontent.com/u/32483834?v=4" width="100px;" alt=""/><br /><sub><b>KA95DEV</b></sub></a><br /><a href="https://github.com/impulse/tailwindcss-figma-plugin/commits?author=KA95DEV" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/leinardi"><img src="https://avatars2.githubusercontent.com/u/273338?v=4" width="100px;" alt=""/><br /><sub><b>Roberto Leinardi</b></sub></a><br /><a href="#ideas-leinardi" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
