@@ -26,11 +26,12 @@ export const convertConfigColor = (color: string): RGBA => {
     color = "rgba(0, 0, 0, 0.0)";
   }
   const { rgba } = parse(color);
+  const alpha = color.length < 8 ? rgba[3] : (rgba[3] / 255)
   return {
     r: rgba[0] / 255,
     g: rgba[1] / 255,
     b: rgba[2] / 255,
-    a: rgba[3]
+    a: alpha
   };
 };
 
