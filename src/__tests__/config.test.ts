@@ -9,7 +9,8 @@ import {
 
 const colors = {
   transparent: "transparent",
-  hex: "#E53E3E",
+  hex6: "#E53E3E",
+  hex8: "#E53E3E80",
   rgb: "rgb(56,161,105)",
   rgba: "rgba(49,151,149, 0.5)",
   hsl: "hsl(170, 45%, 45%)",
@@ -76,8 +77,26 @@ describe("convertConfigColor", () => {
       expect(currentColor["a"]).toBeLessThanOrEqual(1);
     });
 
-    it("should return object from hex", () => {
-      currentColor = convertConfigColor(colors["hex"]);
+    it("should return object from hex6", () => {
+      currentColor = convertConfigColor(colors["hex6"]);
+      // Check if valid object
+      expect(currentColor).toHaveProperty("r");
+      expect(currentColor).toHaveProperty("g");
+      expect(currentColor).toHaveProperty("b");
+      expect(currentColor).toHaveProperty("a");
+      // Check if valid values
+      expect(currentColor["r"]).toBeGreaterThanOrEqual(0);
+      expect(currentColor["r"]).toBeLessThanOrEqual(1);
+      expect(currentColor["g"]).toBeGreaterThanOrEqual(0);
+      expect(currentColor["g"]).toBeLessThanOrEqual(1);
+      expect(currentColor["b"]).toBeGreaterThanOrEqual(0);
+      expect(currentColor["b"]).toBeLessThanOrEqual(1);
+      expect(currentColor["a"]).toBeGreaterThanOrEqual(0);
+      expect(currentColor["a"]).toBeLessThanOrEqual(1);
+    });
+
+    it("should return object from hex8", () => {
+      currentColor = convertConfigColor(colors["hex8"]);
       // Check if valid object
       expect(currentColor).toHaveProperty("r");
       expect(currentColor).toHaveProperty("g");
