@@ -44,6 +44,6 @@
     "@types/node": "13.13.6",
     "jest": "25.3.0",
     "ts-jest": "25.3.0",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.11.0"
   }
 }
