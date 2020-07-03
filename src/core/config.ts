@@ -62,6 +62,10 @@ export const fetchConfigColors = (config): Array<TailwindColor> => {
           });
         }
       } else {
+        if (colorData === "currentColor") {
+          continue;
+        }
+
         foundColors.push({
           name: color,
           value: convertConfigColor(mergedColors[color])
