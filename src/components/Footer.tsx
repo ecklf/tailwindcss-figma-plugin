@@ -1,10 +1,8 @@
 import React from "react";
 
-interface Props {
-  className?: string;
-}
+interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
-function Footer({ className }: Props) {
+const Footer = ({ className = "" }: Props) => {
   return (
     <div
       className={`${className} fixed bottom-0 left-0 right-0 flex items-center justify-between w-full px-4 py-2 bg-gray-800`}
@@ -70,6 +68,6 @@ function Footer({ className }: Props) {
       </div>
     </div>
   );
-}
+};
 
 export default Footer;

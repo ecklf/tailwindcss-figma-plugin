@@ -2,12 +2,20 @@ import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { useMst } from "../models/Root";
 
-interface Props {
-  className?: string;
-}
+interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
-function ColorView({ className }: Props) {
-  const { addColorStyles, loadedTailwindConfig, loadDefaultStub, addSpaces, setAddSpaces, overrideStyles, setOverrideStyles } = useMst();
+interface Props {}
+
+const ColorView = observer(({ className }: Props) => {
+  const {
+    addColorStyles,
+    loadedTailwindConfig,
+    loadDefaultStub,
+    addSpaces,
+    setAddSpaces,
+    overrideStyles,
+    setOverrideStyles,
+  } = useMst();
   const [prefix, setPrefix] = useState<string>("");
 
   const hasAvailableColorStyles = () => {
@@ -21,7 +29,7 @@ function ColorView({ className }: Props) {
       <div className={`${className} w-full`}>
         <input
           value={prefix}
-          onChange={e => setPrefix(e.target.value)}
+          onChange={(e) => setPrefix(e.target.value)}
           className="block w-full mt-2 select-none focus:shadow-none form-input"
           placeholder="Style name prefix (optional)"
         />
@@ -39,7 +47,7 @@ function ColorView({ className }: Props) {
           />
           <span className="ml-2 text-xs text-gray-600 select-none">
             Override styles if available
-    </span>
+          </span>
         </label>
 
         <label className="inline-flex items-center mt-2">
@@ -52,7 +60,7 @@ function ColorView({ className }: Props) {
           />
           <span className="ml-2 text-xs text-gray-600 select-none">
             Add spaces to slashes
-    </span>
+          </span>
         </label>
       </div>
 
@@ -63,7 +71,7 @@ function ColorView({ className }: Props) {
           }}
           className={`select-none focus:outline-none bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded ${
             hasAvailableColorStyles() ? "" : "opacity-50 cursor-not-allowed"
-            }`}
+          }`}
           disabled={hasAvailableColorStyles() ? false : true}
         >
           Add Styles
@@ -79,6 +87,6 @@ function ColorView({ className }: Props) {
       </div>
     </React.Fragment>
   );
-}
+});
 
-export default observer(ColorView);
+export default ColorView;

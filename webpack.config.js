@@ -10,7 +10,7 @@ module.exports = (env, argv) => ({
 
   entry: {
     ui: "./src/App.tsx", // The entry point for your UI code
-    code: "./src/code.ts" // The entry point for your plugin code
+    code: "./src/code.ts", // The entry point for your plugin code
   },
 
   module: {
@@ -33,33 +33,44 @@ module.exports = (env, argv) => ({
                   ? [
                       require("@fullhuman/postcss-purgecss")({
                         whitelist: ["link"],
-                        content: ["**/*.html", "**/*.tsx", "**/*.jsx"],
+                        content: ["**/*.html", "**/*.tsx"],
                         css: ["**/*.css"],
-                        defaultExtractor: content =>
-                          content.match(/[\w-/:]+(?<!:)/g) || []
-                      })
+                        defaultExtractor: (content) => {
+                          // Capture as liberally as possible, including things like `h-(screen-1.5)`
+                          const broadMatches =
+                            content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
+
+                          // Capture classes within other delimiters like .block(class="w-1/2") in Pug
+                          const innerMatches =
+                            content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) ||
+                            [];
+
+                          return broadMatches.concat(innerMatches);
+                        },
+                      }),
                     ]
                   : []),
-                require("autoprefixer")
-              ]
-            }
-          }
-        ]
+                require("autoprefixer"),
+                require("cssnano"),
+              ],
+            },
+          },
+        ],
       },
       // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
       {
         test: /\.(png|jpg|gif|webp|svg|zip)$/,
-        loader: [{ loader: "url-loader" }]
-      }
-    ]
+        loader: [{ loader: "url-loader" }],
+      },
+    ],
   },
 
   // Webpack tries these extensions for you if you omit the extension like "import './file'"
-  resolve: { extensions: [".ts", ".tsx", ".js", ".jsx"] },
+  resolve: { extensions: [".ts", ".tsx", ".js"] },
 
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist") // Compile into a folder called "dist"
+    path: path.resolve(__dirname, "dist"), // Compile into a folder called "dist"
   },
 
   // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
@@ -68,8 +79,8 @@ module.exports = (env, argv) => ({
       template: "./src/ui.html",
       filename: "ui.html",
       inlineSource: ".(js)$",
-      chunks: ["ui"]
+      chunks: ["ui"],
     }),
-    new HtmlWebpackInlineSourcePlugin()
-  ]
+    new HtmlWebpackInlineSourcePlugin(),
+  ],
 });

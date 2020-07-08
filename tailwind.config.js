@@ -1,26 +1,27 @@
 module.exports = {
+  purge: ["./src/**/*.tsx"],
   theme: {
-    customForms: theme => ({
+    customForms: (theme) => ({
       default: {
         input: {
           borderRadius: theme("borderRadius.default"),
           backgroundColor: theme("colors.white"),
           borderColor: theme("colors.gray.300"),
           "&:focus": {
-            borderColor: theme("colors.gray.500")
-          }
+            borderColor: theme("colors.gray.500"),
+          },
         },
         checkbox: {
           color: theme("colors.teal.500"),
           "&:focus": {
             borderColor: theme("colors.gray.500"),
-            boxShadow: undefined
-          }
-        }
-      }
+            boxShadow: undefined,
+          },
+        },
+      },
     }),
-    extend: {}
+    extend: {},
   },
   variants: {},
-  plugins: [require("@tailwindcss/custom-forms")]
+  plugins: [require("@tailwindcss/custom-forms")],
 };

@@ -1,9 +1,10 @@
+import "mobx-react-lite/batchingForReactDom";
 import { Instance, onSnapshot, types } from "mobx-state-tree";
 import { createContext, useContext } from "react";
 import defaultConfig from "../../node_modules/tailwindcss/stubs/defaultConfig.stub";
 import { TailwindConfig } from "../@types/tailwind";
 import { PluginMessage } from "../code";
-import { fetchConfigColors, parseConfig } from "../core/config";
+import { fetchConfigColors } from "../core/config";
 
 const RootModel = types
   .model({
@@ -11,26 +12,26 @@ const RootModel = types
     addSpaces: types.optional(types.boolean, false),
     overrideStyles: types.optional(types.boolean, false),
     configName: types.optional(types.maybeNull(types.string), null),
-    errorMessage: types.optional(types.maybeNull(types.string), null)
+    errorMessage: types.optional(types.maybeNull(types.string), null),
   })
   .volatile(() => {
     const reader = new FileReader();
     const config: TailwindConfig = {
       theme: {},
       variants: {},
-      plugins: []
+      plugins: [],
     };
     return {
       reader,
-      config
+      config,
     };
   })
-  .views(self => ({
+  .views((self) => ({
     get loadedTailwindConfig(): TailwindConfig {
       return self.config;
-    }
+    },
   }))
-  .actions(self => ({
+  .actions((self) => ({
     handleReadAbort: () => {
       alert("Read was aborted");
     },
@@ -58,20 +59,20 @@ const RootModel = types
     sendPluginMessage: (pluginMessage: PluginMessage) => {
       parent.postMessage(
         {
-          pluginMessage
+          pluginMessage,
         },
         "*"
       );
-    }
+    },
   }))
-  .actions(self => ({
+  .actions((self) => ({
     afterCreate: () => {
-      self.reader.onabort = e => self.handleReadAbort;
-      self.reader.onerror = e => self.handleReadError;
+      self.reader.onabort = (e) => self.handleReadAbort;
+      self.reader.onerror = (e) => self.handleReadError;
       self.reader.onload = () => {
-        const binaryString = self.reader.result;
+        const binaryString = self.reader.result as string;
         try {
-          self.setConfig(parseConfig(binaryString as string) as TailwindConfig);
+          self.setConfig(JSON.parse(binaryString));
         } catch (error) {
           new Error(error);
           self.setErrorMessage("Parsing failed!");
@@ -96,14 +97,14 @@ const RootModel = types
           config: fetchConfigColors(self.config),
           overrideStyles: self.overrideStyles,
           addSpaces: self.addSpaces,
-        }
+        },
       });
-    }
+    },
   }));
 
 export const rootStore = RootModel.create({});
 
-onSnapshot(rootStore, snapshot => console.log("Snapshot: ", snapshot));
+onSnapshot(rootStore, (snapshot) => console.log("Snapshot: ", snapshot));
 
 export type RootInstance = Instance<typeof RootModel>;
 const RootStoreContext = createContext<null | RootInstance>(null);

@@ -1,11 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
-import defaultConfig from "../../node_modules/tailwindcss/stubs/defaultConfig.stub";
-import {
-  convertConfigColor,
-  fetchConfigColors,
-  parseConfig
-} from "../core/config";
+import { convertConfigColor, fetchConfigColors } from "../core/config";
+import defaultConfig from "../generated/tw.min.json";
 
 const colors = {
   transparent: "transparent",
@@ -14,37 +8,8 @@ const colors = {
   rgb: "rgb(56,161,105)",
   rgba: "rgba(49,151,149, 0.5)",
   hsl: "hsl(170, 45%, 45%)",
-  hsla: "hsla(170, 45%, 45%, 0.5)"
+  hsla: "hsla(170, 45%, 45%, 0.5)",
 };
-
-describe("parseConfig", () => {
-  // Mimick tailwind.config.js upload via UI by using the default stub
-  const defaultConig: string = fs.readFileSync(
-    path.join(
-      __dirname,
-      "../../node_modules/tailwindcss/stubs/defaultConfig.stub.js"
-    ),
-    "utf-8"
-  );
-
-  describe("reading a valid configuration file", () => {
-    it("should return an object with theme field", () => {
-      expect(parseConfig(defaultConig)).toHaveProperty("theme");
-    });
-  });
-
-  describe("reading an invalid configuration file", () => {
-    it("should return an empty object", () => {
-      console.error = jest.fn();
-      try {
-        parseConfig(null);
-      } catch (error) {
-        expect(console.error).toHaveBeenCalled();
-        expect(error);
-      }
-    });
-  });
-});
 
 describe("fetchConfigColor", () => {
   describe("reading a valid config", () => {

@@ -3,15 +3,13 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { useMst } from "../models/Root";
 
-interface Props {
-  className?: string;
-}
+interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
-function FileUpload({ className = "" }: Props) {
+const FileUpload = observer(({ className = "" }: Props) => {
   const { configName, errorMessage, readFile } = useMst();
 
-  const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.forEach(file => readFile(acceptedFiles[0].name, file));
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => readFile(acceptedFiles[0].name, file));
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -29,10 +27,10 @@ function FileUpload({ className = "" }: Props) {
     >
       <div
         {...getRootProps({
-          className: "focus:outline-none"
+          className: "focus:outline-none",
         })}
       >
-        <input {...getInputProps()} />
+        <input type="file" accept=".json" {...getInputProps()} />
         <p className="select-none">
           {isDragActive
             ? "Drag your file here 🎉"
@@ -41,6 +39,6 @@ function FileUpload({ className = "" }: Props) {
       </div>
     </section>
   );
-}
+});
 
-export default observer(FileUpload);
+export default FileUpload;
