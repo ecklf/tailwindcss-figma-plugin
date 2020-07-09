@@ -1,4 +1,4 @@
-# TailwindCSS Figma Plugin &middot; ![CI](https://action-badges.now.sh/impulse/tailwindcss-figma-plugin) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+# TailwindCSS Figma Plugin &middot; ![Figma Plugin CI](https://github.com/impulse/tailwindcss-figma-plugin/workflows/Figma%20Plugin%20CI/badge.svg) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
