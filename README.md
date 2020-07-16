@@ -45,7 +45,7 @@ Go to the Plugins tab and add this projects `manifest.json`. For more info read 
 
 ## Hot Reloading (macOS only)
 
-Not the smoothest experience, but at better than needing to press a hotkey. In case you use the Figma Beta change App name in `applescript.sh`.
+Not the smoothest experience, but way better than needing to press a hotkey. In case you use the Figma Beta change App name in `applescript.sh`.
 
 ```sh
   $ brew install modd
