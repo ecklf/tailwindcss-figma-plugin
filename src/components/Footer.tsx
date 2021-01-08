@@ -1,12 +1,10 @@
 import React from "react";
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+interface Props {}
 
-const Footer = ({ className = "" }: Props) => {
+const Footer = ({}: Props) => {
   return (
-    <div
-      className={`${className} fixed bottom-0 left-0 right-0 flex items-center justify-between w-full px-4 py-2 bg-gray-800`}
-    >
+    <div className="fixed bottom-0 left-0 right-0 flex items-center justify-between w-full px-4 py-2 bg-gray-800">
       <div className="flex items-center flex-shrink-0 mr-6 text-white">
         <a
           target="_parent"

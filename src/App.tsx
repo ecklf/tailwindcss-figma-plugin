@@ -13,8 +13,12 @@ const App = (props: Props) => {
     <Provider value={rootStore}>
       <div className="px-4 py-3">
         <FileUpload />
-        <ColorView className="mt-3" />
-        <Footer className="mt-3" />
+        <div className="mt-3">
+          <ColorView />
+        </div>
+        <div className="mt-3">
+          <Footer />
+        </div>
       </div>
     </Provider>
   );

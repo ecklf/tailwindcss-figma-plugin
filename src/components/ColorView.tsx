@@ -1,12 +1,11 @@
+import cx from "classnames";
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { useMst } from "../models/Root";
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
-
 interface Props {}
 
-const ColorView = observer(({ className }: Props) => {
+const ColorView = observer(({}: Props) => {
   const {
     addColorStyles,
     loadedTailwindConfig,
@@ -26,11 +25,12 @@ const ColorView = observer(({ className }: Props) => {
 
   return (
     <React.Fragment>
-      <div className={`${className} w-full`}>
+      <div className="w-full">
         <input
+          type="text"
           value={prefix}
           onChange={(e) => setPrefix(e.target.value)}
-          className="block w-full mt-2 select-none focus:shadow-none form-input"
+          className="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
           placeholder="Style name prefix (optional)"
         />
       </div>
@@ -40,7 +40,7 @@ const ColorView = observer(({ className }: Props) => {
           <input
             name="overrideStyles"
             type="checkbox"
-            className="form-checkbox"
+            className="text-teal-600 border-gray-300 rounded shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
             checked={overrideStyles}
             onChange={() => setOverrideStyles(!overrideStyles)}
             disabled={!hasAvailableColorStyles()}
@@ -54,7 +54,7 @@ const ColorView = observer(({ className }: Props) => {
           <input
             name="addSpaces"
             type="checkbox"
-            className="form-checkbox"
+            className="text-teal-600 border-gray-300 rounded shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
             checked={addSpaces}
             onChange={() => setAddSpaces(!addSpaces)}
           />
@@ -66,18 +66,23 @@ const ColorView = observer(({ className }: Props) => {
 
       <div className="flex flex-row items-center mt-2">
         <button
+          type="button"
+          className={cx(
+            "inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-md shadow-sm",
+            hasAvailableColorStyles()
+              ? "hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+              : "opacity-75 cursor-not-allowed"
+          )}
+          disabled={hasAvailableColorStyles() ? false : true}
           onClick={() => {
             addColorStyles(prefix);
           }}
-          className={`select-none focus:outline-none bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded ${
-            hasAvailableColorStyles() ? "" : "opacity-50 cursor-not-allowed"
-          }`}
-          disabled={hasAvailableColorStyles() ? false : true}
         >
           Add Styles
         </button>
         <button
-          className="px-4 py-2 font-medium text-gray-500 hover:text-gray-800"
+          type="button"
+          className="inline-flex items-center px-4 py-2 ml-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
           onClick={() => {
             loadDefaultStub();
           }}
