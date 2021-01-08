@@ -34,7 +34,7 @@ const FileUpload = observer(({ className = "" }: Props) => {
         <p className="select-none">
           {isDragActive
             ? "Drag your file here 🎉"
-            : errorMessage ?? configName ?? "Upload config by drag or click"}
+            : errorMessage ?? configName ?? "Import tailwind.json"}
         </p>
       </div>
     </section>

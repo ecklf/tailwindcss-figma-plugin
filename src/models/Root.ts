@@ -1,10 +1,10 @@
 import "mobx-react-lite/batchingForReactDom";
 import { Instance, onSnapshot, types } from "mobx-state-tree";
 import { createContext, useContext } from "react";
-import defaultConfig from "../../node_modules/tailwindcss/stubs/defaultConfig.stub";
 import { TailwindConfig } from "../@types/tailwind";
 import { PluginMessage } from "../code";
 import { fetchConfigColors } from "../core/config";
+import defaultConfig from "../generated/tw.min.json";
 
 const RootModel = types
   .model({
@@ -20,6 +20,24 @@ const RootModel = types
       theme: {},
       variants: {},
       plugins: [],
+      darkMode: false,
+      presets: [],
+      variantOrder: [
+        "first",
+        "last",
+        "odd",
+        "even",
+        "visited",
+        "checked",
+        "group-hover",
+        "group-focus",
+        "focus-within",
+        "hover",
+        "focus",
+        "focus-visible",
+        "active",
+        "disabled",
+      ],
     };
     return {
       reader,

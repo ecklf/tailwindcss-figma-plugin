@@ -7,7 +7,10 @@ export interface TailwindConfig {
   prefix?: string;
   important?: boolean;
   separator?: string;
-  corePlugins?: boolean;
+  corePlugins?: string[];
+  darkMode: boolean;
+  presets: any[];
+  variantOrder: string[];
 }
 export interface Theme {
   extend?: Theme;
@@ -78,5 +81,5 @@ export interface Theme {
   transitionDelay?: KeyConfig;
 }
 export interface KeyConfig {
-  [key: string]: string | { [key: string]: string };
+  [key: string]: string | { [key: string]: any };
 }
