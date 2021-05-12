@@ -46,7 +46,7 @@
     "@types/react-dom": "^17.0.0",
     "cssnano": "^4.1.10",
     "jest": "26.1.0",
-    "postcss": "^8.2.3",
+    "postcss": "^8.2.10",
     "ts-jest": "26.1.1",
     "webpack-dev-server": "3.11.0"
   }
