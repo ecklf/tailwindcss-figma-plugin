@@ -40,11 +40,11 @@ const Footer = ({}: Props) => {
               strokeLinejoin="round"
             />
           </svg>
-          by impulse
+          by ecklf
         </span>
         <a
           target="_parent"
-          href="https://github.com/impulse/tailwindcss-figma-plugin"
+          href="https://github.com/ecklf/tailwindcss-figma-plugin"
           className="text-white link pointer hover:text-teal-500"
         >
           <svg
