@@ -12,7 +12,7 @@
     "build:dev": "webpack --mode=development",
     "build": "webpack --mode=production"
   },
-  "author": "impulse",
+  "author": "ecklf",
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^10.3.4",
