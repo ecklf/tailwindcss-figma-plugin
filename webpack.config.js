@@ -30,33 +30,6 @@ module.exports = (env, argv) => ({
               postcssOptions: {
                 plugins: [
                   require("tailwindcss")("./tailwind.config.js"),
-                  ...(argv.mode === "production"
-                    ? [
-                        require("@fullhuman/postcss-purgecss")({
-                          whitelist: ["link"],
-                          content: ["**/*.html", "**/*.tsx"],
-                          css: ["**/*.css"],
-                          defaultExtractor: (content) => {
-                            // Capture as liberally as possible, including things like `h-(screen-1.5)`
-                            const broadMatches =
-                              content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
-                            const broadMatchesWithoutTrailingSlash = broadMatches.map(
-                              (match) => trimEnd(match, "\\")
-                            );
-
-                            // Capture classes within other delimiters like .block(class="w-1/2") in Pug
-                            const innerMatches =
-                              content.match(
-                                /[^<>"'`\s.(){}[\]#=%]*[^<>"'`\s.(){}[\]#=%:]/g
-                              ) || [];
-
-                            return broadMatches
-                              .concat(broadMatchesWithoutTrailingSlash)
-                              .concat(innerMatches);
-                          },
-                        }),
-                      ]
-                    : []),
                   require("autoprefixer"),
                   require("cssnano"),
                 ],
