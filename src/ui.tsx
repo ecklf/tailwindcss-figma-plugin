@@ -8,7 +8,7 @@ import "./resources/css/ui.css";
 
 interface Props {}
 
-const App = (props: Props) => {
+const UI = (props: Props) => {
   return (
     <Provider value={rootStore}>
       <div className="px-4 py-3">
@@ -24,4 +24,4 @@ const App = (props: Props) => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("react-page"));
+ReactDOM.render(<UI />, document.getElementById("react-page"));
