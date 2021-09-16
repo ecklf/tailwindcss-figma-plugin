@@ -487,6 +487,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.5.tgz#9283c9ce5b289a3c4f61c12757469e59377f81f3"
   integrity sha512-6nFkfkmSeV/rqSaS4oWHgmpnYw194f6hmWF5is6b0J1naJZoiD0NTc9AiUwPHvWsowkjuHErCZT1wa0jg+BLIA==
 
+"@figma/plugin-typings@^1.34.1":
+  version "1.34.1"
+  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.34.1.tgz#47d52f689418d0dad97c2b0424ad069680603fce"
+  integrity sha512-em9v0liZaNCfndggqMjmLDxHj5b+lfMqpimmT05XMJLTH4Vgdf5JiziJx5xRvd3OwUH+kdimustdvzHsD9WE8Q==
+
 "@fullhuman/postcss-purgecss@4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-4.0.3.tgz#55d71712ec1c7a88e0d1ba5f10ce7fb6aa05beb4"

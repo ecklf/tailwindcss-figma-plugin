@@ -38,6 +38,7 @@
     "webpack-cli": "^4.8.0"
   },
   "devDependencies": {
+    "@figma/plugin-typings": "^1.34.1",
     "@fullhuman/postcss-purgecss": "4.0.3",
     "@tailwindcss/forms": "^0.3.3",
     "@types/jest": "27.0.1",
