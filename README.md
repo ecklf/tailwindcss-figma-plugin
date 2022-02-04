@@ -1,4 +1,4 @@
-# TailwindCSS Figma Plugin 
+# Tailwind CSS Figma Plugin 
 
 ![Figma Plugin CI](https://github.com/impulse/tailwindcss-figma-plugin/workflows/Figma%20Plugin%20CI/badge.svg) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/impulse/tailwindcss-figma-plugin/blob/master/LICENSE) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
