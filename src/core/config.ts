@@ -63,7 +63,7 @@ export const fetchConfigColors = (config): Array<TailwindColor> => {
           });
         }
       } else {
-        if (colorData === "currentColor") {
+        if (colorData === "currentColor" || colorData === "inherit") {
           continue;
         }
         foundColors.push({
